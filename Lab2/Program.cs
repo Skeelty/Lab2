@@ -10,10 +10,24 @@ namespace Lab2
             var file = File.ReadAllText("input.txt");
 
             var n = Convert.ToInt32(file);
+            var array = new int[n+1];
+            array[1] = 2;
+            array[2] = 4;
 
-            var result = (n * (n + 1) / 2) + 1;
+            if (n == 1 || n == 2)
+            {
+                File.WriteAllText("output.txt", array[n].ToString());
+            }
+            else
+            {
+                for (int i = 3; i < n+1; i++)
+                {
+                    array[i] = array[i - 1] + i;
+                }
 
-            File.WriteAllText("output.txt", result.ToString());
+                File.WriteAllText("output.txt", array[n].ToString());
+            }
+
         }
     }
 }
